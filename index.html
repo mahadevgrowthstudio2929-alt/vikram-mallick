@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160707">
+
+<title>Vikram Mallick | Cricket Analysis</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- META PIXEL CODE: PASTE YOUR PIXEL HERE -->
+
+<style>
+
+:root{
+--bg:#160707;
+--red:#d52024;
+--gold:#ffcf60;
+--yellow:#ffe39b;
+--muted:#bca9a2;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+width:100%;
+height:100%;
+height:100dvh;
+overflow:hidden;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:white;
+-webkit-font-smoothing:antialiased;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(ellipse at 50% -10%,rgba(196,30,34,.30),transparent 55%),
+radial-gradient(ellipse at 50% 110%,rgba(255,180,45,.10),transparent 55%);
+pointer-events:none;
+}
+
+.page{
+height:100%;
+height:100dvh;
+max-width:480px;
+margin:auto;
+padding:22px 22px max(20px,env(safe-area-inset-bottom));
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:space-between;
+position:relative;
+z-index:1;
+}
+
+/* TOP BRAND */
+
+.top{
+width:100%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:9px;
+}
+
+.brand-mark{
+width:30px;
+height:30px;
+border:1px solid rgba(255,207,96,.55);
+display:grid;
+place-items:center;
+border-radius:8px;
+color:var(--gold);
+font-family:'Barlow Condensed';
+font-weight:900;
+font-size:17px;
+background:rgba(255,207,96,.07);
+}
+
+.brand-name{
+font-family:'Barlow Condensed';
+font-size:18px;
+font-weight:800;
+letter-spacing:1.1px;
+}
+
+.live{
+display:flex;
+align-items:center;
+gap:6px;
+font-size:9px;
+font-weight:800;
+letter-spacing:1.2px;
+color:#ffcf60;
+border:1px solid rgba(255,207,96,.25);
+padding:8px 10px;
+border-radius:30px;
+background:rgba(255,207,96,.05);
+}
+
+.dot{
+width:6px;
+height:6px;
+background:#ff4141;
+border-radius:50%;
+box-shadow:0 0 10px #ff4141;
+animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+50%{opacity:.25}
+}
+
+/* MAIN */
+
+.hero{
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.logo-area{
+position:relative;
+margin-bottom:19px;
+}
+
+.logo-area::before{
+content:"";
+position:absolute;
+inset:-13px;
+border:1px solid rgba(255,207,96,.20);
+border-radius:50%;
+}
+
+.logo-area::after{
+content:"";
+position:absolute;
+inset:-7px;
+border:1px dashed rgba(255,207,96,.45);
+border-radius:50%;
+animation:rotate 35s linear infinite;
+}
+
+@keyframes rotate{
+to{transform:rotate(360deg)}
+}
+
+.logo{
+width:105px;
+height:105px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid var(--gold);
+box-shadow:
+0 0 0 5px rgba(255,207,96,.07),
+0 0 38px rgba(222,48,31,.30);
+background:#260b0b;
+}
+
+.eyebrow{
+font-size:10px;
+font-weight:800;
+letter-spacing:3px;
+color:var(--gold);
+margin-bottom:9px;
+}
+
+h1{
+font-family:'Barlow Condensed',sans-serif;
+font-size:clamp(48px,14vw,69px);
+font-weight:900;
+line-height:.91;
+letter-spacing:-.5px;
+text-transform:uppercase;
+}
+
+h1 span{
+display:block;
+color:var(--gold);
+text-shadow:0 4px 30px rgba(255,189,60,.15);
+}
+
+.line{
+width:45px;
+height:3px;
+background:linear-gradient(90deg,var(--red),var(--gold));
+border-radius:5px;
+margin:17px auto;
+}
+
+.subtitle{
+font-size:12px;
+color:#dacbc3;
+line-height:1.8;
+max-width:295px;
+}
+
+.subtitle strong{
+color:white;
+font-weight:700;
+}
+
+/* INFO STRIP */
+
+.info{
+width:100%;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+border:1px solid rgba(255,207,96,.19);
+border-radius:13px;
+background:linear-gradient(135deg,rgba(255,207,96,.065),rgba(105,20,20,.13));
+overflow:hidden;
+}
+
+.info-item{
+text-align:center;
+padding:14px 4px;
+position:relative;
+}
+
+.info-item:not(:last-child)::after{
+content:"";
+position:absolute;
+right:0;
+top:25%;
+height:50%;
+width:1px;
+background:rgba(255,207,96,.17);
+}
+
+.info-icon{
+font-size:17px;
+margin-bottom:6px;
+color:var(--gold);
+}
+
+.info-title{
+font-family:'Barlow Condensed';
+font-size:14px;
+font-weight:800;
+letter-spacing:.4px;
+color:white;
+}
+
+.info-sub{
+font-size:9px;
+color:var(--muted);
+margin-top:4px;
+}
+
+/* CTA */
+
+.bottom{
+width:100%;
+text-align:center;
+}
+
+.access{
+font-size:10px;
+letter-spacing:2px;
+font-weight:800;
+color:var(--gold);
+margin-bottom:11px;
+}
+
+.join-btn{
+display:block;
+width:100%;
+border:none;
+border-radius:12px;
+padding:19px 12px;
+background:linear-gradient(105deg,#ffe49a 0%,#ffc34b 45%,#f0a929 100%);
+color:#321007;
+font-family:'Inter';
+font-size:15px;
+font-weight:900;
+letter-spacing:.3px;
+cursor:pointer;
+position:relative;
+box-shadow:
+0 5px 0 #98601c,
+0 10px 32px rgba(255,174,39,.22);
+transition:transform .2s,box-shadow .2s;
+animation:ctaGlow 2.8s infinite;
+}
+
+@keyframes ctaGlow{
+0%,100%{
+box-shadow:0 5px 0 #98601c,0 10px 25px rgba(255,174,39,.16);
+}
+50%{
+box-shadow:0 5px 0 #98601c,0 10px 38px rgba(255,174,39,.42);
+}
+}
+
+.join-btn:active{
+transform:translateY(3px);
+box-shadow:0 2px 0 #98601c;
+}
+
+.helper{
+font-size:10px;
+color:#bba9a1;
+margin-top:15px;
+line-height:1.6;
+}
+
+.footer{
+font-size:9px;
+color:#75615c;
+text-align:center;
+line-height:1.6;
+}
+
+.footer b{
+color:#a48a72;
+font-weight:600;
+}
+
+/* SMALL MOBILE OPTIMIZATION */
+
+@media(max-height:740px){
+
+.page{
+padding-top:15px;
+padding-bottom:12px;
+}
+
+.logo{
+width:83px;
+height:83px;
+}
+
+.logo-area{
+margin-bottom:13px;
+}
+
+h1{
+font-size:48px;
+}
+
+.line{
+margin:11px auto;
+}
+
+.info-item{
+padding:10px 3px;
+}
+
+.join-btn{
+padding:15px;
+}
+
+.helper{
+margin-top:10px;
+}
+
+}
+
+@media(max-height:620px){
+
+.logo{
+width:65px;
+height:65px;
+}
+
+.logo-area{
+margin-bottom:9px;
+}
+
+h1{
+font-size:42px;
+}
+
+.eyebrow{
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:11px;
+}
+
+.line{
+margin:8px auto;
+}
+
+.info-item{
+padding:7px 3px;
+}
+
+.info-icon{
+font-size:14px;
+margin-bottom:3px;
+}
+
+.info-sub{
+font-size:8px;
+}
+
+.join-btn{
+padding:12px;
+}
+
+.access{
+margin-bottom:7px;
+}
+
+.helper{
+margin-top:7px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<!-- HEADER -->
+
+<header class="top">
+
+<div class="brand">
+<div class="brand-mark">VM</div>
+<div class="brand-name">VIKRAM MALLICK</div>
+</div>
+
+<div class="live">
+<div class="dot"></div>
+CRICKET DESK
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="logo-area">
+<img src="logo.png" alt="Vikram Mallick" class="logo">
+</div>
+
+<div class="eyebrow">
+WELCOME TO THE OFFICIAL CHANNEL
+</div>
+
+<h1>
+VIKRAM
+<span>MALLICK</span>
+</h1>
+
+<div class="line"></div>
+
+<p class="subtitle">
+Your destination for
+<strong>Cricket Analysis, Match Insights</strong>
+& Trading Discussions.
+<br>
+Stay connected with every match.
+</p>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="info">
+
+<div class="info-item">
+<div class="info-icon">✦</div>
+<div class="info-title">MATCH</div>
+<div class="info-sub">Analysis</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">◈</div>
+<div class="info-title">CRICKET</div>
+<div class="info-sub">Insights</div>
+</div>
+
+<div class="info-item">
+<div class="info-icon">◎</div>
+<div class="info-title">EXPERT</div>
+<div class="info-sub">Opinions</div>
+</div>
+
+</section>
+
+
+<!-- JOIN SECTION -->
+
+<section class="bottom">
+
+<div class="access">
+✦ GET CHANNEL ACCESS ✦
+</div>
+
+<button
+type="button"
+class="join-btn"
+onclick="joinChannel()">
+JOIN VIKRAM MALLICK NOW
+</button>
+
+<p class="helper">
+One Tap Away From Exclusive Cricket Discussions
+</p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+Independent cricket analysis community.<br>
+Predictions are opinions, not guaranteed outcomes.
+<br>
+<b>© 2026 VIKRAM MALLICK</b>
+
+</footer>
+
+</main>
+
+
+<script>
+
+function joinChannel(){
+
+window.open(
+'https://t.me/+X_n7SG9iwRg1MDJl',
+'_blank',
+'noopener,noreferrer'
+);
+
+}
+
+</script>
+
+</body>
+</html>
